@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio#4</title>
+    <style>
+        body {
+            background-color: rgb(125, 222, 247);
+            font-family: Arial, sans-serif;
+        }
+
+      
+        .cuadro {
+            background-color: white;
+            padding: 20px;
+            border: 3px solid black;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 50px auto;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+       
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cuadro">
+        <h2>Introduzca una Palabra</h2>
+
+        <form id="formTexto">
+            <input type="text" id="inputTexto" placeholder="Escribe aquí...">
+            <label for="inputTexto"></label>
+        </form>
+
+        <p>El Texto invertido es: <span id="textoInvertido"></span></p>
+    </div>
+
+    <script>
+        const app = {
+
+            invertirText: function(texto) {
+                return texto.split('').reverse().join('');
+            },
+
+            ValorInput: function() {
+                return document.getElementById('inputTexto').value;
+            },
+
+            mostrarTextoInvertido: function(texto) {
+                document.getElementById('textoInvertido').textContent = texto;
+            },
+
+            manejarEventoInput: function() {
+                const texto = this.ValorInput();
+                const textoInvertido = this.invertirText(texto);
+                this.mostrarTextoInvertido(textoInvertido);
+            },
+
+            init: function() {
+                document.getElementById('inputTexto').addEventListener('input', () => {
+                    this.manejarEventoInput();
+                });
+            }
+        };
+
+        app.init();
+    </script>
+
+</body>
+</html>
